@@ -21,11 +21,12 @@ public class Calc {
     }
 
     public void add() {
+        System.out.println("j'ajoute des commentaire pour faire genre :)");
         state = 0.0f;
     }
 
     public Float equal() {
-        state = state + 3.0f; //simple change
+        state = state + 1.0f; //simple change
         return getState();
     }
     

@@ -22,6 +22,7 @@ public class Calc {
 
     public void add() {
         System.out.println("j'ajoute des commentaire pour faire genre :)");
+        System.out.println("blablabla);
         state = 0.0f;
     }
 

@@ -25,7 +25,7 @@ public class Calc {
     }
 
     public Float equal() {
-        state = state + 1.0f; //simple change
+        state = state + 3.0f; //simple change
         return getState();
     }
     

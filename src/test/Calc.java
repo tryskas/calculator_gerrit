@@ -2,18 +2,31 @@ package test;
 
 public class Calc {
 
-    private float state = 0.0f;
+    private Float state = 0.0f;
+
+    private boolean negative = false;
 
     public Float getState() {
-        return state;
+        return negative ? - state : state;
     }
 
     public Float pressKey(float i) {
-        state=10*state+i;
-        return state;
+        if (i < 0) {
+            negative = true;
+        } else {
+            state = state*10 + i;
+        }
+        
+        return getState();
     }
 
     public void add() {
-        state = 0;
+        state = 0.0f;
     }
+
+    public Float equal() {
+        state = 3.0f;
+        return getState();
+    }
+    
 }

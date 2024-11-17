@@ -17,7 +17,8 @@ public class CalcTest {
             Arguments.of(new int[] {0}, 0.0f),
             Arguments.of(new int[] {9}, 9.0f),
             Arguments.of(new int[] {0, 9}, 9.0f),
-            Arguments.of(new int[] {4, 2}, 42.0f)
+            Arguments.of(new int[] {4, 2}, 42.0f),
+            Arguments.of(new int[] {-1, 2}, -2.0f)
         );
     }
  
@@ -33,44 +34,7 @@ public class CalcTest {
         Float state = sut.getState();
         assertEquals(0.0f, state, Float.MIN_NORMAL);
     }
- 
-    /* 
- 
-    @Test
-    public void pressZeroKey() {
-        Float nb = sut.pressKey(0);
-        Float state = sut.getState();
-        assertEquals(0.0f, state, Float.MIN_NORMAL);
-        assertEquals(0.0f, nb, Float.MIN_NORMAL);
-    }
- 
-    @Test
-    public void pressAKey(){
-        Float nb = sut.pressKey(9);
-        Float state = sut.getState();
-        assertEquals(9.0f, state, Float.MIN_NORMAL);
-        assertEquals(9.0f, nb, Float.MIN_NORMAL);
-    }
- 
-    @Test
-    public void pressTwoKey(){
-        sut.pressKey(0);
-        Float nb = sut.pressKey(9);
-        Float state = sut.getState();
-        assertEquals(9.0f, state, Float.MIN_NORMAL);
-        assertEquals(9.0f, nb, Float.MIN_NORMAL);
-    }
- 
-    @Test
-    public void pressTwoDigitsNumber(){
-        sut.pressKey(4);
-        Float nb = sut.pressKey(2);
-        Float state = sut.getState();
-        assertEquals(42.0f, state, Float.MIN_NORMAL);
-        assertEquals(42.0f, nb, Float.MIN_NORMAL);
-    } */
- 
-    // The following test method replaces the previous 4
+
  
     @ParameterizedTest
     @MethodSource("keyPressArgs")
@@ -92,6 +56,20 @@ public class CalcTest {
         Float state = sut.getState();
         assertEquals(2.0f, state, Float.MIN_NORMAL);
         assertEquals(2.0f, nb, Float.MIN_NORMAL);
+    }
+
+    @Test
+    public void testAdditionPositive(){
+        sut.pressKey(1);
+        sut.add();
+        sut.pressKey(3);
+
+        Float nb = sut.equal();
+        Float state = sut.getState();
+
+        assertEquals(3.0f, state, Float.MIN_NORMAL);
+        assertEquals(3.0f, nb, Float.MIN_NORMAL);
+
     }
  
 }
